@@ -70,7 +70,7 @@ class AzureAISearchVectorStore:
             return
         documents = [
             {
-                "id": f"{doc_id}:{i}",
+                "id": f"{doc_id}-{i}",
                 "doc_id": doc_id,
                 "user_id": user_id,
                 "content": chunk.text,
