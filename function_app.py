@@ -58,7 +58,7 @@ def ingest_document_on_blob_created(event: func.EventGridEvent) -> None:
         raise
 
 @app.function_name(name="upload_document")
-@app.route(route="documents", methods=["POST"], auth_level=func.AuthLevel.FUNCTION)
+@app.route(route="api/documents", methods=["POST"], auth_level=func.AuthLevel.FUNCTION)
 def upload_document(req: func.HttpRequest) -> func.HttpResponse:
     user_id = req.params.get("user_id")
     filename = req.params.get("filename")
@@ -97,7 +97,7 @@ def upload_document(req: func.HttpRequest) -> func.HttpResponse:
 
 
 @app.function_name(name="get_document_status")
-@app.route(route="documents/{doc_id}", methods=["GET"], auth_level=func.AuthLevel.FUNCTION)
+@app.route(route="api/documents/{doc_id}", methods=["GET"], auth_level=func.AuthLevel.FUNCTION)
 def get_document_status(req: func.HttpRequest) -> func.HttpResponse:
     doc_id = req.route_params.get("doc_id")
     user_id = req.params.get("user_id")
